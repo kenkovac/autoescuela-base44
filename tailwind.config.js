@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class"],
+    darkMode: "class",
     content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
   	extend: {
@@ -59,7 +59,14 @@ module.exports = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+  			'neo-yellow': 'var(--neo-yellow)',
+  			'neo-pink': 'var(--neo-pink)',
+  			'neo-blue': 'var(--neo-blue)',
+  			'neo-green': 'var(--neo-green)',
+  			'neo-red': 'var(--neo-red)',
+  			'neo-purple': 'var(--neo-purple)',
+  			'neo-orange': 'var(--neo-orange)'
   		},
   		keyframes: {
   			'accordion-down': {

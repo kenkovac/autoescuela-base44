@@ -29,12 +29,12 @@ export default function LoginForm({ onLoginSuccess }) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-500 rounded-full filter blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 dark:bg-blue-400 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-500 dark:bg-yellow-400 rounded-full filter blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500 dark:bg-green-400 rounded-full filter blur-3xl"></div>
       </div>
 
       <motion.div
@@ -85,16 +85,16 @@ export default function LoginForm({ onLoginSuccess }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="bg-white/95 backdrop-blur-sm neo-card border-4 border-black p-8 shadow-2xl"
+          className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm neo-card border-4 border-black dark:border-white p-8 shadow-2xl"
         >
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-black text-foreground uppercase">Iniciar Sesión</h2>
-            <p className="text-muted-foreground font-bold text-sm mt-1">Accede a tu cuenta</p>
+            <h2 className="text-2xl font-black text-black dark:text-white uppercase">Iniciar Sesión</h2>
+            <p className="text-gray-600 dark:text-gray-300 font-bold text-sm mt-1">Accede a tu cuenta</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email" className="font-black uppercase text-foreground text-sm">
+              <Label htmlFor="email" className="font-black uppercase text-black dark:text-white text-sm">
                 Correo Electrónico
               </Label>
               <Input
@@ -110,7 +110,7 @@ export default function LoginForm({ onLoginSuccess }) {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="font-black uppercase text-foreground text-sm">
+              <Label htmlFor="password" className="font-black uppercase text-black dark:text-white text-sm">
                 Contraseña
               </Label>
               <div className="relative">
@@ -127,7 +127,7 @@ export default function LoginForm({ onLoginSuccess }) {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                   disabled={isLoading}
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
@@ -139,7 +139,7 @@ export default function LoginForm({ onLoginSuccess }) {
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="bg-red-50 border-2 border-red-500 text-red-700 p-4 neo-card flex items-center gap-3"
+                className="bg-red-50 dark:bg-red-900/20 border-2 border-red-500 text-red-700 dark:text-red-300 p-4 neo-card flex items-center gap-3"
               >
                 <AlertCircle className="w-5 h-5 flex-shrink-0" />
                 <p className="text-sm font-bold">{error}</p>
@@ -166,11 +166,11 @@ export default function LoginForm({ onLoginSuccess }) {
           </form>
 
           {/* Footer */}
-          <div className="text-center mt-6 pt-6 border-t-2 border-border">
-            <p className="text-xs text-muted-foreground font-bold uppercase">
+          <div className="text-center mt-6 pt-6 border-t-2 border-gray-200 dark:border-gray-700">
+            <p className="text-xs text-gray-500 dark:text-gray-400 font-bold uppercase">
               Sistema de Gestión Administrativa
             </p>
-            <p className="text-xs text-muted-foreground/60 font-bold uppercase mt-1">
+            <p className="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase mt-1">
               © 2024 Kovac C.A.
             </p>
           </div>

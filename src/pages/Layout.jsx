@@ -44,7 +44,6 @@ import AuthService from "../components/auth/AuthService";
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 import ConfirmationDialog from "../components/ui/ConfirmationDialog";
 import { ToastProvider } from "../components/ui/ToastProvider";
-import ThemeToggle from "../components/ui/ThemeToggle";
 
 const navigationItems = [
 {
@@ -103,6 +102,10 @@ export default function Layout({ children, currentPageName }) {
     // Obtener datos del usuario actual
     const user = AuthService.getCurrentUser();
     setCurrentUser(user);
+
+    // Ensure only light mode styles are applied
+    const root = window.document.documentElement;
+    root.classList.remove("dark");
   }, []);
 
   const handleLogout = () => {
@@ -122,6 +125,106 @@ export default function Layout({ children, currentPageName }) {
     <ProtectedRoute>
       <ToastProvider>
         <SidebarProvider>
+          <style>
+            {`
+            :root {
+              --background: #ffffff;
+              --foreground: #000000;
+              --card: #ffffff;
+              --card-foreground: #000000;
+              --popover: #ffffff;
+              --popover-foreground: #000000;
+              --primary: #000000;
+              --primary-foreground: #ffffff;
+              --secondary: #f3f4f6;
+              --secondary-foreground: #000000;
+              --muted: #f3f4f6;
+              --muted-foreground: #6b7280;
+              --accent: #f59e0b;
+              --accent-foreground: #000000;
+              --destructive: #ef4444;
+              --destructive-foreground: #ffffff;
+              --border: #000000;
+              --input: #ffffff;
+              --ring: #000000;
+              --radius: 0px;
+
+              --neo-shadow: 4px 4px 0px #000000;
+              --neo-shadow-hover: 6px 6px 0px #000000;
+              --neo-yellow: #fbbf24;
+              --neo-pink: #ec4899;
+              --neo-blue: #3b82f6;
+              --neo-green: #10b981;
+              --neo-red: #ef4444;
+            }
+
+            * {
+              border-radius: 0px !important;
+            }
+
+            .neo-card {
+              border: 3px solid var(--border);
+              box-shadow: var(--neo-shadow);
+              transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+              background: var(--card);
+            }
+
+            .neo-card:hover {
+              box-shadow: var(--neo-shadow-hover);
+              transform: translate(-2px, -2px);
+            }
+
+            .neo-button {
+              border: 3px solid var(--border);
+              box-shadow: 3px 3px 0px var(--border);
+              transition: all 0.1s;
+              font-weight: 800;
+              text-transform: uppercase;
+              border-radius: 0px !important;
+            }
+
+            .neo-button:hover {
+              box-shadow: 5px 5px 0px var(--border);
+              transform: translate(-2px, -2px);
+            }
+
+            .neo-button:active {
+              box-shadow: 1px 1px 0px var(--border);
+              transform: translate(1px, 1px);
+            }
+
+            .neo-input {
+              border: 3px solid var(--border);
+              box-shadow: none;
+              background: var(--input);
+              border-radius: 0px !important;
+            }
+
+            .neo-sidebar {
+              border-right: 4px solid var(--border);
+              background: var(--card);
+            }
+
+            /* Ensure select and dropdowns work well with light theme */
+            [data-radix-select-content],
+            [data-radix-dropdown-menu-content] {
+              background: var(--card) !important;
+              border: 3px solid var(--border) !important;
+              box-shadow: var(--neo-shadow) !important;
+            }
+
+            [data-radix-select-item],
+            [data-radix-dropdown-menu-item] {
+              color: var(--foreground) !important;
+            }
+
+            [data-radix-select-item][data-highlighted],
+            [data-radix-dropdown-menu-item][data-highlighted] {
+              background: var(--accent) !important;
+              color: var(--accent-foreground) !important;
+            }
+            `}
+          </style>
           <div className="min-h-screen flex w-full bg-background text-foreground">
             <Sidebar className="neo-sidebar">
               <SidebarHeader className="border-b-4 border-border p-6">
@@ -197,7 +300,6 @@ export default function Layout({ children, currentPageName }) {
                     <button className="p-2 neo-button bg-secondary hover:bg-muted">
                       <Bell className="w-4 h-4 text-foreground" />
                     </button>
-                    <ThemeToggle />
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <button className="p-2 neo-button bg-secondary hover:bg-muted">
